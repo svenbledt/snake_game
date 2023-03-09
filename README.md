@@ -4,11 +4,8 @@ Javascript game snake
 ---
 
 ---
-# snake_game
-## Project Task / Assignment 
-* Create a website with a trivia quiz and use all avaliable Web-Dev-Techniques (Html, Css, Js, Php, Bs5, [Github](https://github.com/Gaudenz77/snake_game))
+# SNAKE-GAME
 
-------------------------------
 
 ## Usage: Trivia Quiz
 <ol>

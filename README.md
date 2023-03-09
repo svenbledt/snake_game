@@ -6,42 +6,15 @@ Javascript game snake
 ---
 # snake_game
 ## Project Task / Assignment 
-* Create a website with a trivia quiz and use all avaliable Web-Dev-Techniques (Html, Css, Js, Php, Bs5, [Github](https://github.com/svenbledt/WinX_RELOADED), [FIGMA](https://www.figma.com/file/WvnuFdc8VXnEzWyWyrSheU/winxReloaded?node-id=0%3A1&t=2ecVyyduPw9fGSsu-1))
-----
+* Create a website with a trivia quiz and use all avaliable Web-Dev-Techniques (Html, Css, Js, Php, Bs5, [Github](https://github.com/Gaudenz77/snake_game))
 
-
-## Performance Criteria:
-<ul>
-<li>Adapt and extend content, technologies and methods of the existing Trivia Quiz</li>
-<li>Website that functions well</li>
-<li>Improved quiz experience</li>
-<li>Complete responive design functionality</li>
-<li>Website needs to be more attractive and easier to use than the prototype</li>
-<li>Use PHP/PDO to manage connection and data from MySQL</li>
-<li>PHP data collection ($_POST, $_GET, $_SESSION) and HTML generation</li>
-</ul>
-
-----
-# IMPORTANT!
-
-If Databse cannot be importred correctly, either set your docker yaml before frist time library to `db_winx` when using the file included (db_winXReloaded_230216.sql), change the line 18 and 19 `db_winx` to `library` or use the database-backup from the simplon-brief, last attachment.
-Thnak you for aour understanding. If not working just feel free to ask. (mail below).
-
-# ->>>>
-## STATUS PROJECT: INCOMPLETE 
-## PS: git might not be public, Sven is advised to manage to make it public that.
 ------------------------------
 
 ## Usage: Trivia Quiz
 <ol>
-<li>open Index.php-page</li>
-<li>login or register for an account and login</li>
-<li>chose your quiz topic</li>
-<li>answer all questions</li>
-<li style="color:red">(incomplete -> report shows up)</li>
-<li style="color:red">(incomplete -> stored in your account and you can logout and com back whenever you like)</li>
-<li style="color:red">(incomplete -> Do another quiz and improve your general knowledge)</li>
-</ol>
+<li>open Index.html-page locally with browser of your choice</li>
+<li>Use either arrow keys or buttons (buttons are for mobile screen/game usage)</li>
+<li>Enjoy the game</li>
 
 ## Thank you for your time.
 ---
@@ -52,28 +25,21 @@ Thnak you for aour understanding. If not working just feel free to ask. (mail be
 * none, free use
 ----
 ## Tools Used:
-* HTML, CSS, Javascript, PHP PDO, Heidisql, Nginx, Mysql
-* [Heidisql](https://www.heidisql.com//)
-
+* HTML, CSS, Javascript
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Bootstrap_5.2](https://getbootstrap.com/)
-* [FIGMA](https://www.figma.com/file/WvnuFdc8VXnEzWyWyrSheU/winxReloaded?node-id=0%3A1&t=2ecVyyduPw9fGSsu-1) for layout improvment
-* [AOS-Animate On Scroll](https://michalsnik.github.io/aos/)
-* [Animate.css](https://animate.style/)
-* [Github](https://github.com/svenbledt/WinX_RELOADED) (for file repo/sharing/workflow)
+* [Github](https://github.com/Gaudenz77/snake_game) (for file repo/sharing/workflow)
 * Internet for research
 * imagination 
 * feeling for details
 * the will to learn, improve share knowledge throughout the whole team-experience
 ----
-## Deliverables:
+## Main Element:
 <div style="text-align:center; font-size:20px">
 
-[Github](https://github.com/svenbledt/WinX_RELOADED)<br>
-[FIGMA](https://www.figma.com/file/WvnuFdc8VXnEzWyWyrSheU/winxReloaded?node-id=0%3A1&t=2ecVyyduPw9fGSsu-1)<br>
-[Trello](https://trello.com/invite/b/2ouVnlJZ/ATTI4df3af7021be8b59018b477eb209801c43ACF2BE/winxreloaded-q-team-red)
+[Github](https://github.com/Gaudenz77/snake_game)<br>
 
 </div>
 
 ----
-### A production by [#WinXReloaded](https://github.com/svenbledt/WinX_RELOADED) / Team Red  
+### A production by Gaudenz77, Gaudenz Raiber [Mail@Me](mailto:gaudenzraiber@yahoo.de).

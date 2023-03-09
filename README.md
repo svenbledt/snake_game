@@ -7,9 +7,9 @@ Javascript game snake
 # SNAKE-GAME
 
 
-## Usage: Trivia Quiz
+## Usage: 
 <ol>
-<li>open Index.html-page locally with browser of your choice</li>
+<li>open index.html-file locally with browser of your choice</li>
 <li>Use either arrow keys or buttons (buttons are for mobile screen/game usage)</li>
 <li>Enjoy the game</li>
 

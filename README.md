@@ -19,7 +19,7 @@ Javascript game snake
 ----
 ----
 ## License:
-* none, free use
+* none, free use, please give credential at my github [@Gaudenz77](https://github.com/Gaudenz77)
 ----
 ## Tools Used:
 * HTML, CSS, Javascript

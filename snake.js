@@ -20,8 +20,6 @@ var foodY;
 
 var gameOver = false;
 
-
-
 window.onload = function() {
     board = document.getElementById("board");
     board.height = rows * blockSize;
@@ -38,7 +36,6 @@ function update() {
     if(gameOver) {
         return;
     }
-
 
     context.fillStyle = "black";
     context.fillRect(0, 0,board.width, board.height);
@@ -87,39 +84,29 @@ function update() {
             
         } 
     }
-
 }
-
-
-/*  */
 
 function changeDirection(e) {
 
     if(e.code == "ArrowUp" && velocityY != 1) {
         velocityX = 0;
         velocityY = -1;
-
     }
 
     else if(e.code == "ArrowDown" && velocityY != -1) {
         velocityX = 0;
         velocityY = 1;
-
     }
 
     else if(e.code == "ArrowLeft" && velocityX != 1) {
         velocityX = -1;
         velocityY = 0;
-
     }
 
     if(e.code == "ArrowRight" && velocityX != -1) {
         velocityX = 1;
         velocityY = 0;
-
     }
-
-
 }
 
 var upBtn = document.getElementById("upBtn");
@@ -142,55 +129,10 @@ rightBtn.addEventListener("click", function() {
     changeDirection({ code: "ArrowRight" });
 });
 
-
-
 // (0 - 1) * cols -> (0 - 19.9999) -> (0-19) *25
 function placeFood() {
     foodX  = Math.floor(Math.random() * cols) * blockSize;
     foodY  = Math.floor(Math.random() * rows) * blockSize;
 }
 
-
-
 // ----------------------------------------------------------------
-/* document.getElementById("upButton").addEventListener("touchstart", function(event) {
-    event.preventDefault(); // prevent scrolling
-    var id = event.target.id;
-    if (id === "upButton") {
-        ArrowUp();
-      
-    }
-     
-  });
-
-  document.getElementById("downButton").addEventListener("touchstart", function(event) {
-    event.preventDefault(); // prevent scrolling
-    var id = event.target.id;
-    
-     if (id === "downButton") {
-        ArrowDown();
-   
-
-    }
-     
-  });
-  
-  document.getElementById("leftButton").addEventListener("touchstart", function(event) {
-    event.preventDefault(); // prevent scrolling
-    var id = event.target.id;
-    if (id === "leftButton") {
-        ArrowLeft();
-      
-    }
-      
-  });
-
-  document.getElementById("upButton").addEventListener("touchstart", function(event) {
-    event.preventDefault(); // prevent scrolling
-    var id = event.target.id;
-    if  (id === "rightButton") {
-        ArrowRight();
-    
-      }
-
-  }); */

@@ -11,8 +11,8 @@ class Snake {
     this.body = [];
 
     // set initial coordinates of the snake's head
-    this.x = this.board.blockSize * 5;
-    this.y = this.board.blockSize * 5;
+    this.x = Math.floor(Math.random() * this.board.cols) * this.board.blockSize;
+    this.y = Math.floor(Math.random() * this.board.rows) * this.board.blockSize;
   }
 
   /**
@@ -131,9 +131,9 @@ class Snake {
   leaveBoard() {
     if (
       this.x < 0 ||
-      this.x > (this.board.cols -1) * this.board.blockSize ||
+      this.x > (this.board.cols - 1) * this.board.blockSize ||
       this.y < 0 ||
-      this.y > (this.board.rows -1) * this.board.blockSize
+      this.y > (this.board.rows - 1) * this.board.blockSize
     )
       return true;
     else return false;

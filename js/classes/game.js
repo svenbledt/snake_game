@@ -16,7 +16,7 @@ class Game {
 
     // timer interval
     this.intervalId;
-    this.fps = 2; // frames per second
+    this.fps = 10; // frames per second
   }
 
   /**

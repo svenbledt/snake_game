@@ -23,7 +23,7 @@ window.onload = function () {
   addListeners(direction);
 
   // start updating the game situation
-  setInterval(update, 1000 / 2);
+  setInterval(update, 1000 / 10);
 };
 
 function update() {

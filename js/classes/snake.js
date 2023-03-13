@@ -131,9 +131,9 @@ class Snake {
   leaveBoard() {
     if (
       this.x < 0 ||
-      this.x > this.board.cols * this.board.blockSize ||
+      this.x > (this.board.cols -1) * this.board.blockSize ||
       this.y < 0 ||
-      this.y > this.board.rows * this.board.blockSize
+      this.y > (this.board.rows -1) * this.board.blockSize
     )
       return true;
     else return false;

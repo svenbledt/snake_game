@@ -1,35 +1,29 @@
-// board
-var blockSize = 25;
-var rows = 20;
-var cols = 20;
-var board;
-var context;
-
-// snake head
-
-var snakeX = blockSize * 5;
-var snakeY = blockSize * 5;
-
-var velocityX = 0;
-var velocityY = 0;
-
-var snakeBody = [];
-
-var foodX;
-var foodY;
+// board with rows = 20, cols = 20 and blockSize 25
+var board = new Board(20, 20, 25, "board");
+var food;
+var snake;
+var direction;
 
 var gameOver = false;
 
 window.onload = function () {
-  board = document.getElementById("board");
-  board.height = rows * blockSize;
-  board.width = cols * blockSize;
-  context = board.getContext("2d"); // used for drawing on board
+  // prepare board
+  board.prepare();
 
-  placeFood();
-  document.addEventListener("keyup", changeDirection);
-  // update();
-  setInterval(update, 1000 / 10); // redraw all 100 millisecs
+  // prepare food and place it but do not draw it yet
+  food = new Food(board);
+
+  // prepare snake
+  snake = new Snake(board);
+
+  // prepare direction object
+  direction = new Direction();
+
+  // add listeners for keyup and clicks on arrow button events
+  addListeners(direction);
+
+  // start updating the game situation
+  setInterval(update, 1000 / 2);
 };
 
 function update() {
@@ -37,99 +31,73 @@ function update() {
     return;
   }
 
-  context.fillStyle = "black";
-  context.fillRect(0, 0, board.width, board.height);
+  // draw empty board
+  board.draw();
 
-  context.fillStyle = "red";
-  context.fillRect(foodX, foodY, blockSize, blockSize);
+  // draw food
+  food.draw();
 
-  if (snakeX == foodX && snakeY == foodY) {
-    snakeBody.push([foodX, foodY]);
-    placeFood();
+  // check if snake hits the food ...
+  if (snake.hit(food)) {
+    // ... and add the food to the the tail of the snake
+    snake.eat(food);
+
+    // place more food, but do not draw it yet
+    food.place();
   }
 
-  for (let i = snakeBody.length - 1; i > 0; i--) {
-    snakeBody[i] = snakeBody[i - 1];
+  // shift the snake's body parts
+  snake.shift();
+
+  // move the head of the snake in the current direction
+  snake.moveHead(direction);
+
+  // draw the snake
+  snake.draw();
+
+  // check gameover condition 1: snake leaves board
+  if (snake.leaveBoard()) {
+    quitGame();
   }
 
-  if (snakeBody.length) {
-    snakeBody[0] = [snakeX, snakeY];
-  }
-
-  context.fillStyle = "lime";
-  snakeX += velocityX * blockSize;
-  snakeY += velocityY * blockSize;
-  context.fillRect(snakeX, snakeY, blockSize, blockSize);
-  for (i = 0; i < snakeBody.length; i++) {
-    context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
-  }
-
-  // gameover conditions
-
-  if (
-    snakeX < 0 ||
-    snakeX > cols * blockSize ||
-    snakeY < 0 ||
-    snakeY > rows * blockSize
-  ) {
-    gameOver = true;
-    alert("Game Over");
-    /* confirm("Press Restart"); */
-    location.reload();
-  }
-
-  for (let i = 0; i < snakeBody.length; i++) {
-    if (snakeX == snakeBody[i][0] && snakeY == snakeBody[i][1]) {
-      gameOver = true;
-      alert("Game Over");
-      /* confirm("Press Restart"); */
-      location.reload();
-    }
+  // check gameover condition 2: snake hits itself (goes backwards hitting itself)
+  if (snake.hitItself()) {
+    quitGame();
   }
 }
 
-function changeDirection(e) {
-  if (e.code == "ArrowUp" && velocityY != 1) {
-    velocityX = 0;
-    velocityY = -1;
-  } else if (e.code == "ArrowDown" && velocityY != -1) {
-    velocityX = 0;
-    velocityY = 1;
-  } else if (e.code == "ArrowLeft" && velocityX != 1) {
-    velocityX = -1;
-    velocityY = 0;
-  }
-
-  if (e.code == "ArrowRight" && velocityX != -1) {
-    velocityX = 1;
-    velocityY = 0;
-  }
+function quitGame() {
+  gameOver = true;
+  alert("Game Over");
+  /* confirm("Press Restart"); */
+  location.reload();
 }
 
-var upBtn = document.getElementById("upBtn");
-upBtn.addEventListener("click", function () {
-  changeDirection({ code: "ArrowUp" });
-});
-
-var downBtn = document.getElementById("downBtn");
-downBtn.addEventListener("click", function () {
-  changeDirection({ code: "ArrowDown" });
-});
-
-var leftBtn = document.getElementById("leftBtn");
-leftBtn.addEventListener("click", function () {
-  changeDirection({ code: "ArrowLeft" });
-});
-
-var rightBtn = document.getElementById("rightBtn");
-rightBtn.addEventListener("click", function () {
-  changeDirection({ code: "ArrowRight" });
-});
-
-// (0 - 1) * cols -> (0 - 19.9999) -> (0-19) *25
-function placeFood() {
-  foodX = Math.floor(Math.random() * cols) * blockSize;
-  foodY = Math.floor(Math.random() * rows) * blockSize;
+function addListeners(direction) {
+  addKeyupListener(direction);
+  addButtonClickListeners(direction);
 }
 
-// ----------------------------------------------------------------
+function addKeyupListener(direction) {
+  document.addEventListener("keyup", function (e) {
+    direction.change(e);
+  });
+}
+
+function addButtonClickListeners(direction) {
+  document.getElementById("upBtn").addEventListener("click", function () {
+    direction.change({ code: "ArrowUp" });
+  });
+
+  document.getElementById("downBtn").addEventListener("click", function () {
+    direction.change({ code: "ArrowDown" });
+  });
+
+  document.getElementById("leftBtn").addEventListener("click", function () {
+    direction.change({ code: "ArrowLeft" });
+  });
+
+  document.getElementById("rightBtn").addEventListener("click", function () {
+    direction.change({ code: "ArrowRight" });
+  });
+}

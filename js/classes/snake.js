@@ -4,10 +4,13 @@ class Snake {
     this.initialize();
   }
 
+  /**
+   * Initializes the body array and places the snake's head.
+   */
   initialize() {
     this.body = [];
 
-    // set initial position of the snake's head.
+    // set initial coordinates of the snake's head
     this.x = this.board.blockSize * 5;
     this.y = this.board.blockSize * 5;
   }
@@ -15,20 +18,22 @@ class Snake {
   /**
    * Moves the head of the snake.
    *
-   * @param {Direction} direction
+   * @param {int} velocityX
+   * @param {int} velocityY
    */
-
   moveHead(direction) {
     this.x += direction.x * this.board.blockSize;
     this.y += direction.y * this.board.blockSize;
   }
 
   /**
-   * Draws the snakes body and head on the board.
+   * Draws the snake's body.
    */
-
   draw() {
+    // set the fillStyle for the squares
     this.board.drawingContext.fillStyle = "lime";
+
+    // draw the moved head first and then the rest of the snake's body
     this.drawSquare(this.x, this.y);
 
     for (let i = 0; i < this.body.length; i++) {
@@ -37,13 +42,11 @@ class Snake {
   }
 
   /**
-   * Draws a square on the board.
+   * Draws a square at the indicated coordinates.
    *
    * @param {int} x
    * @param {int} y
-   *
-   * */
-
+   */
   drawSquare(x, y) {
     this.board.drawingContext.fillRect(
       x,
@@ -54,27 +57,23 @@ class Snake {
   }
 
   /**
-   * Checks if the snake has eaten the food.
+   * Checks if the head of the snake hits the food.
    *
    * @param {*} food
    *
-   * @returns {boolean}
-   *
-   * */
-
+   * @returns {Boolean}
+   */
   hit(food) {
     return this.x == food.x && this.y == food.y;
   }
 
   /**
-   * Checks if the snake has hit itself.
+   * Checks if the head of the snake hits itself.
    *
-   * @returns {boolean}
-   *
-   * */
-
-  hitSelf() {
-    if (!this.body.lenght) return false;
+   * @returns {Boolean}
+   */
+  hitItself() {
+    if (!this.body.length) return false;
 
     for (let i = 0; i < this.body.length; i++) {
       if (this.x == this.body[i][0] && this.y == this.body[i][1]) {
@@ -86,38 +85,37 @@ class Snake {
   }
 
   /**
-   *  checks if the snake eats the food
+   * Eats the given food by adding the coordinates of the food
+   * to the tail of the snake.
    *
    * @param {Food} food
-   *
    */
-
   eat(food) {
     this.body.push([food.x, food.y]);
   }
 
   update(direction) {
-    // shift the body of the snake.
+    // shift the snake's body parts
     this.shift();
 
-    // move the head of the snake.
+    // move the head of the snake towards the current direction
     this.moveHead(direction);
 
-    // draw the snake on the board.
+    // draw the snake
     this.draw();
   }
 
   /**
-   * Shifts the body of the snake.
+   * Shifts the snake's body coordinates towards the tail and the
+   * current tail coordinates are removed by this.
    *
-   * This method is called when the snake moves.
-   *
-   * */
-
+   * The current head coordinates of the snake are copied to the head
+   * of the body array.
+   */
   shift() {
-    if (!this.body.length) return; // if the body array is empty, return.
+    if (!this.body.length) return; // Necessary if snake only has head coordinates.
 
-    // loop backwards through the body array.
+    // loop backwards
     for (let i = this.body.length - 1; i > 0; i--) {
       this.body[i] = this.body[i - 1];
     }
@@ -126,30 +124,18 @@ class Snake {
   }
 
   /**
-   * moves the head of the snake.
+   * Checks if the head of the snake has left the board.
    *
-   * @param {Direction} direction
+   * @returns {Boolean}
    */
-
-  moveHead(direction) {
-    this.x += direction.x * this.board.blockSize;
-    this.y += direction.y * this.board.blockSize;
-  }
-  /**
-   * Checks if the snake has hit the wall.
-   *
-   * @returns {boolean}
-   *
-   * */
-
   leaveBoard() {
     if (
       this.x < 0 ||
-      this.x >= this.board.cols * this.board.blockSize ||
+      this.x > this.board.cols * this.board.blockSize ||
       this.y < 0 ||
-      this.y >= this.board.rows * this.board.blockSize
-    ) {
+      this.y > this.board.rows * this.board.blockSize
+    )
       return true;
-    } else return false;
+    else return false;
   }
 }

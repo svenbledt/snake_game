@@ -1,8 +1,5 @@
 class Direction {
   constructor() {
-    this.x;
-    this.y;
-
     this.initialize();
   }
 
@@ -12,15 +9,13 @@ class Direction {
   }
 
   /**
-   *    Change the direction of the snake.
+   * Changes the direction after the given event code.
    *
-   *    This method is called when the user presses a key.
-   *    also checks if the user is trying to go in the opposite direction.
+   * This method prohibits the snake from changing into the
+   * exact opposite direction.
    *
-   * @param {Object} event
-   *
+   * @param {Object} code
    */
-
   change(event) {
     switch (event.code) {
       case "ArrowUp":

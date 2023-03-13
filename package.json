@@ -1,5 +1,28 @@
 {
+  "name": "snake_game",
+  "description": "Javascript game snake [![Gaudenz77 - Snake-Game / A Javascript-Project](https://img.shields.io/static/v1?label=Gaudenz77&message=Snake-Game+%2F+A+Javascript-Project&color=2ea44f&style=for-the-badge&logo=js)](https://github.com/Gaudenz77/snake_game) ---",
+  "version": "1.0.0",
+  "main": "index.html",
+  "devDependencies": {},
   "dependencies": {
     "bootstrap": "^5.2.3"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gaudenz77/snake_game.git"
+  },
+  "keywords": [
+    "snake",
+    "game",
+    "gaudenz77"
+  ],
+  "author": "Gaudenz77",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gaudenz77/snake_game/issues"
+  },
+  "homepage": "https://github.com/Gaudenz77/snake_game#readme"
 }
